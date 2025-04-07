@@ -1,0 +1,10 @@
+/* MovieGrid.css */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  padding: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

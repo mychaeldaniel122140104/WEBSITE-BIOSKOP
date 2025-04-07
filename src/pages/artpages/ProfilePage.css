@@ -1,0 +1,56 @@
+
+.profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  
+  .profile-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .profile-card {
+    display: flex;
+    background-color: #1c1f26;
+    padding: 24px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .profile-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-right: 24px;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .profile-info p {
+    margin: 6px 0;
+  }
+  
+  .profile-extra {
+    margin-top: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .coins, .premium {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #2e3543;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+  
