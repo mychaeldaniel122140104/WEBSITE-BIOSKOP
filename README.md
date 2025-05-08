@@ -75,12 +75,4 @@ Website ini adalah aplikasi pemesanan tiket bioskop secara online. Pengguna dapa
 
 ---
 
-**FERTILIZER E-COMMERCE USER FLOW**
-
-1. **Pengunjung** dapat melihat daftar film, detail film, dan jadwal tayang tanpa login.
-2. **Admin** harus login terlebih dahulu melalui halaman autentikasi. Setelah berhasil login, admin diarahkan ke dashboard untuk mengelola data film (menambah, mengedit, menghapus).
-3. Admin dapat menambah film baru, memperbarui data film yang sudah ada, atau menghapus film yang tidak diperlukan. Semua interaksi admin dengan data film dilakukan melalui API dengan autentikasi dasar.
-4. **CRUD Film** dilakukan melalui endpoint RESTful seperti GET, POST, PUT, dan DELETE pada `/movies`.
-5. **Frontend React** berkomunikasi dengan backend (Node.js) menggunakan Axios atau Fetch API. Autentikasi dikirim melalui header Authorization dan digunakan untuk melindungi endpoint yang penting.
-6. Setelah login, kredensial disimpan di localStorage untuk autentikasi selama sesi aktif, memastikan pengalaman yang lebih aman dan terkelola dengan baik.
 
