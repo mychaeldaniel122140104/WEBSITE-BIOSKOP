@@ -6,6 +6,14 @@
 ## Deskripsi
 Website ini adalah aplikasi pemesanan tiket bioskop secara online. Pengguna dapat melihat daftar film yang tersedia, melihat detail film, dan melakukan pemesanan tiket secara online. Admin dapat menambah, mengedit, dan menghapus film.
 
+## Fitur
+- Autentikasi login untuk admin
+- Daftar dan detail film
+- CRUD data film (hanya admin)
+- Pemesanan tiket
+- Simpan data login di localStorage
+- Proteksi endpoint dengan autentikasi dasar
+- Responsive design
 
 **BACK-END**
 
