@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import MovieGrid from '../components/MovieGrid';
 import ErrorMessage from '../components/ErrorMessage';
+import './artpages/Home.css'; 
+
 
 function Home() {
   const [movies, setMovies] = useState([]);

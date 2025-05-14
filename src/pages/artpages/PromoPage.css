@@ -1,13 +1,16 @@
 .promo-container {
-    padding: 40px;
-    color: white;
+    padding: 24px;
+    background-color: #3f3f3f;
+    /* abu-abu muda */
+    min-height: 100vh;
+    /* supaya full tinggi halaman */
 }
 
 .promo-title {
+    color: blanchedalmond;
     text-align: center;
     font-size: 28px;
     margin-bottom: 24px;
-    color: black;
 }
 
 
@@ -18,7 +21,7 @@
 }
 
 .promo-card {
-    background-color: #1e1f29;
+    background-color: #b38c22;
     padding: 16px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -44,7 +47,7 @@
 
 .original {
     text-decoration: line-through;
-    color: #aaa;
+    color: #ffffff;
     margin-right: 8px;
 }
 
@@ -55,5 +58,5 @@
 
 .coin-info {
     font-size: 12px;
-    color: #999;
+    color: #ffffff;
 }

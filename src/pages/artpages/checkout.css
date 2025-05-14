@@ -1,60 +1,72 @@
 .checkout-container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 30px;
-    border-radius: 16px;
-    background: #ffffff;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 16px;
+  background-color: #b38c22;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+body {
+  background-color: #3f3f3f;
+  /* Abu-abu tua */
+}
+
+
+.checkout-input {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.buy-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+  background-color: #45a049;
+}
+
+.confirmation {
+  animation: fadeIn 0.6s ease-in-out;
+  padding-top: 10px;
+}
+
+.qr-code {
+  margin-top: 20px;
+}
+
+.timer {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #e53935;
+  background: #fff3f3;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .checkout-input {
-    width: 100%;
-    padding: 12px 16px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
-    box-sizing: border-box;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .buy-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    margin-top: 15px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .buy-button:hover {
-    background-color: #45a049;
-  }
-  
-  .confirmation {
-    animation: fadeIn 0.6s ease-in-out;
-    padding-top: 10px;
-  }
-  
-  .qr-code {
-    margin-top: 20px;
-  }
-  
-  .timer {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #e53935;
-    background: #fff3f3;
-    padding: 8px 16px;
-    border-radius: 8px;
-    display: inline-block;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
+}

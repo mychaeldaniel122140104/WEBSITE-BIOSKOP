@@ -6,17 +6,22 @@
   padding: 12px 24px;
   color: white;
   border-bottom: 1px solid #333;
+  position: relative;
 }
 
-.logo {
+.logo-text {
   font-size: 20px;
   font-weight: bold;
   color: #f5c518;
 }
 
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
 .nav-links a {
   color: white;
-  margin-left: 16px;
   text-decoration: none;
   font-weight: 500;
 }
@@ -51,20 +56,38 @@
   color: #999;
 }
 
-.sign-in {
-  background-color: #2c3544;
-  color: white;
+.mobile-menu-button {
+  display: none;
+  background: none;
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  font-size: 1.8rem;
   cursor: pointer;
+  color: white;
 }
 
-.sign-in:hover {
-  background-color: #3c4555;
-}
+@media (max-width: 1200px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    right: 24px;
+    background-color: #0c0e13;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 200px;
+    z-index: 1000;
+  }
 
-.menu-icon {
-  font-size: 20px;
-  cursor: pointer;
+  .nav-links.show {
+    display: flex;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .search-box {
+    display: none;
+  }
 }

@@ -1,0 +1,10 @@
+.home-page {
+    padding: 15px;
+    background-color: #3f3f3f; /* abu-abu muda */
+    min-height: 100vh; /* supaya full tinggi halaman */
+  }
+  
+  .home-page h2 {
+    color: blanchedalmond;
+  }
+  
