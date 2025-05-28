@@ -1,0 +1,150 @@
+.custom-header {
+  background-color: #0c0e13;
+  color: white;
+  padding: 16px 24px;
+  border-bottom: 1px solid #333;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo-location {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f5c518;
+}
+
+.location-badge {
+  background-color: #1a1c22;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.top-link {
+  color: white;
+  text-decoration: none;
+}
+
+.icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.mobile-menu-button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: white;
+  display: none;
+}
+
+.bottom-header {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.slogan {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1c22;
+  padding: 8px 16px;
+  border-radius: 30px;
+  width: 60%;
+  margin: 0 auto 24px;
+}
+
+.search-box input {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 8px;
+  outline: none;
+  width: 100%;
+}
+
+.search-icon {
+  color: #999;
+}
+
+.feature-icons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.feature-icons div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: white;
+}
+
+.feature-icons img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 6px;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #0c0e13;
+  padding: 1rem;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.mobile-menu.show {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .top-right > a, .top-right > .icon {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .search-box {
+    width: 90%;
+  }
+
+  .feature-icons {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

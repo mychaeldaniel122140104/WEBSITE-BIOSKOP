@@ -1,0 +1,272 @@
+.profile-container {
+  padding: 24px;
+  background-color: #202020;
+  min-height: 100vh;
+}
+
+.profile-title {
+  color: blanchedalmond;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.bioskop-container {
+  padding: 24px;
+  color: white;
+}
+
+.bioskop-card {
+  background-color: #2b2b2b;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.cinema-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cinema-card {
+  display: flex;
+  background: rgb(114, 112, 112);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin: 0 100px;
+}
+
+.cinema-image {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+}
+
+.cinema-info {
+  padding: 16px;
+  flex: 1;
+}
+
+.cinema-info h3 {
+  margin: 0 0 8px 0;
+  color: #b38c22;
+}
+
+.schedule {
+  margin-top: 10px;
+}
+
+.movie-schedule {
+  margin-bottom: 10px;
+}
+
+.bioskop-type {
+  display: inline-block;
+  background-color: #444;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin-right: 8px;
+  margin-top: 4px;
+  color: blanchedalmond;
+  font-size: 14px;
+}
+
+.add-button {
+  background: linear-gradient(to right, #f0c040, #e0a800);
+  color: #1a1a1a;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(240, 192, 64, 0.3);
+  margin-bottom: 20px;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.edit-button:hover {
+    background-color: #0056b3;
+}
+.delete-button:hover {
+    background-color: #c82333;
+}
+.modal-buttons button {
+    margin-right: 10px;
+}
+
+
+.add-button:hover {
+  background: linear-gradient(to right, #ffd65a, #f0c040);
+  transform: translateY(-2px);
+}
+
+
+.profile-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-right: 24px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-info p {
+  margin: 6px 0;
+}
+
+.profile-extra {
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.coins,
+.premium {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #2e3543;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.access-button {
+  background-color: #673ab7;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.access-button:hover {
+  background-color: #512da8;
+}
+
+.cinema-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.cinema-table thead {
+  background-color: #1a1a1a;
+}
+
+.cinema-table th {
+  padding: 16px;
+  margin-bottom: 50px;
+  text-align: left;
+  color: #f0c040;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid #333;
+}
+
+.cinema-table td {
+  padding: 18px 16px;
+  background-color: #262626;
+  color: #f0f0f0;
+  vertical-align: middle;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.25s;
+}
+
+.cinema-table tr:hover td {
+  background-color: #333333;
+}
+
+.table-image {
+  width: 150px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-content input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #f44336;
+  color: white;
+}

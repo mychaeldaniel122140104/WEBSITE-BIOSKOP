@@ -1,0 +1,22 @@
+[
+  {
+    "name": "AEON MALL TANJUNG BARAT XXI",
+    "types": ["Cinema XXI"]
+  },
+  {
+    "name": "AGORA MALL XXI",
+    "types": ["Cinema XXI", "The Premiere", "IMAX"]
+  },
+  {
+    "name": "ARION XXI",
+    "types": ["Cinema XXI"]
+  },
+  {
+    "name": "ARTHA GADING XXI",
+    "types": ["Cinema XXI"]
+  },
+  {
+    "name": "BASSURA XXI",
+    "types": ["Cinema XXI"]
+  }
+]
