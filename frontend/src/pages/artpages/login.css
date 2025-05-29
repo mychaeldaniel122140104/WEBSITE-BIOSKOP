@@ -39,6 +39,34 @@
     align-items: center;
 }
 
+/* Styling untuk dropdown (select) */
+select {
+  padding: 0.65rem;
+  border: 1px solid #FFD700;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #FFD700;
+  color: #333;
+  appearance: none; /* Hilangkan default arrow (bisa diganti dengan custom arrow jika mau) */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'5'%20viewBox%3D'0%200%2010%205'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200l5%205%205-5z'%20fill%3D'%23666'%20/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.65rem;
+  cursor: pointer;
+}
+
+/* Fokus style */
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Optional: Style untuk <option>, tapi ini biasanya terbatas oleh OS/browser */
+option {
+  padding: 0.5rem;
+}
+
+
 .login-container {
     background-color: rgba(0, 0, 0, 0.75);
     padding: 40px;

@@ -8,3 +8,4 @@ class User(Base):
     username = Column(String, unique=True, nullable=False)
     email = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)  # nanti bisa di-hash
+    role = Column(Integer, nullable=False, default=2)  # 1 = admin, 2 = user

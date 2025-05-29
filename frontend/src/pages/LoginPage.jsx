@@ -44,7 +44,7 @@ function LoginPage() {
     return (
         <div className="login-page">
             <div className="login-container">
-                <img src="../../build/images/logo.jpg" alt="Logo" className="login-logo" />
+                <img src="/images/logo.jpg" alt="Logo" className="login-logo" />
                 <form className="login-form" onSubmit={handleLogin}>
                     <h2 className="login-title">filmmychael</h2>
                     <p className="login-subtitle">Pesan Tiket dan Makanan di filmmychael!</p>

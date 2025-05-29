@@ -3,6 +3,7 @@ import './artpages/BioskopPage.css';
 import { Link } from 'react-router-dom';
 
 function AddCinemaModal({ onClose, onAdd }) {
+
     const [formData, setFormData] = useState({
         name: '',
         address: '',
@@ -97,6 +98,7 @@ function AddCinemaModal({ onClose, onAdd }) {
 }
 
 function EditCinemaModal({ cinema, onClose, onEdit, onDelete }) {
+    const dummyCinemaImage = '/images/dummy_cinema.jpg'; 
     const [formData, setFormData] = useState({
         name: cinema.name,
         address: cinema.address,
@@ -174,7 +176,7 @@ function EditCinemaModal({ cinema, onClose, onEdit, onDelete }) {
                     />
                     {formData.image && (
                         <div className="image-preview">
-                            <img src={formData.image} alt="Preview" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
+                            <img src={dummyCinemaImage} alt="" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
                         </div>
                     )}
                     <div className="modal-buttons">
@@ -195,6 +197,33 @@ function Profile() {
     const [editingCinema, setEditingCinema] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [userRole, setUserRole] = useState(null);
+    const dummyCinemaImage = '/images/dummy_cinema.jpg'; 
+    // Ganti dengan path gambar dummy yang sesuai
+    useEffect(() => {
+        const fetchUserRole = async () => {
+            try {
+                const response = await fetch('http://localhost:6543/api/current-user', {
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) throw new Error('Gagal mengambil data user');
+
+                const data = await response.json();
+                console.log('Current user data:', data);
+                setUserRole(data.role); // Sekarang data.role ada
+            } catch (error) {
+                console.error('Gagal ambil role:', error);
+                setUserRole(2);
+            }
+        };
+
+        fetchUserRole();
+    }, []);
+
 
     useEffect(() => {
         fetchCinemas();
@@ -216,6 +245,7 @@ function Profile() {
             }
 
             const data = await response.json();
+            console.log('Cinema data:', data);
             setCinemas(data);
         } catch (error) {
             console.error('Gagal mengambil data bioskop:', error);
@@ -331,14 +361,14 @@ function Profile() {
 
     const handleAddClick = (e) => {
         e.preventDefault();
-        console.log('Add button clicked'); // Debug log
+        console.log('Add button clicked');
         setModalType('add');
         setModalOpen(true);
     };
 
     const handleEditClick = (cinema, e) => {
         e.preventDefault();
-        console.log('Edit button clicked for:', cinema.name); // Debug log
+        console.log('Edit button clicked for:', cinema.name);
         setModalType('edit');
         setEditingCinema(cinema);
         setModalOpen(true);
@@ -358,17 +388,19 @@ function Profile() {
         <div className="profile-container">
             <div className="header-row">
                 <h2 className="profile-title">Daftar Bioskop</h2>
-                <button
-                    className="add-button"
-                    onClick={handleAddClick}
-                    disabled={loading}
-                    style={{
-                        cursor: loading ? 'not-allowed' : 'pointer',
-                        opacity: loading ? 0.6 : 1
-                    }}
-                >
-                    + Tambah Bioskop
-                </button>
+                {userRole === 1 && (
+                    <button
+                        className="add-button"
+                        onClick={handleAddClick}
+                        disabled={loading}
+                        style={{
+                            cursor: loading ? 'not-allowed' : 'pointer',
+                            opacity: loading ? 0.6 : 1
+                        }}
+                    >
+                        + Tambah Bioskop
+                    </button>
+                )}
             </div>
 
             {error && (
@@ -401,11 +433,14 @@ function Profile() {
                             <tr key={cinema.id || index}>
                                 <td>
                                     <img
-                                        src={cinema.image}
-                                        alt={cinema.name}
+                                        src={dummyCinemaImage}
+                                        alt={`Cinema ${cinema.name}`}
                                         className="table-image"
-                                        onError={(e) => {
-                                            e.target.src = '/static/placeholder.jpg'; // fallback image
+                                        style={{
+                                            width: '80px',
+                                            height: '60px',
+                                            objectFit: 'cover',
+                                            borderRadius: '4px'
                                         }}
                                     />
                                 </td>
@@ -416,16 +451,18 @@ function Profile() {
                                 <td>Rp {cinema.price_weekend}</td>
                                 <td>
                                     <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                                    <Link to="/news">
-                                        <button className="access-button">Access</button>
-                                    </Link>
-                                    <button
-                                        className="edit-button"
-                                        onClick={(e) => handleEditClick(cinema, e)}
-                                        disabled={loading}
-                                    >
-                                    ✎
-                                    </button>
+                                        <Link to="/home">
+                                            <button className="access-button">Access</button>
+                                        </Link>
+                                        {userRole === 1 && (
+                                            <button
+                                                className="edit-button"
+                                                onClick={(e) => handleEditClick(cinema, e)}
+                                                disabled={loading}
+                                            >
+                                                ✎
+                                            </button>
+                                        )}
                                     </div>
                                 </td>
                             </tr>

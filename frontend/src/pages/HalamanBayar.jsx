@@ -134,7 +134,7 @@ export default function HalamanBayar() {
     };
 
     const handleBayar = () => {
-        const pilihan = window.confirm("Pilih OK untuk Bayar di Tempat, Cancel untuk QRIS");
+        const pilihan = window.confirm("Pilih OK untuk Bayar di Tempat, **Cancel** untuk QRIS");
         if (pilihan) {
             alert("Silakan ke kasir untuk membayar.");
             navigate("/menu");
@@ -185,7 +185,7 @@ export default function HalamanBayar() {
             ) : (
                 <div className="qris-section">
                     <h3>Silakan Scan QRIS di bawah ini:</h3>
-                    <img src="/images/avengers.jpg" alt="QRIS" className="qris-img" />
+                    <img src="/images/qris.jpg" alt="QRIS" className="qris-img" />
                     <div className="qris-section">
                         <button className="btn-bayar" onClick={() => navigate("/menu")}>Selesai</button>
                     </div>

@@ -8,7 +8,6 @@ function SeatSelection() {
   const [selectedSeats, setSelectedSeats] = useState([]);  // ✅ perbaiki nama
   const [showSeats, setShowSeats] = useState(false);
   const [availableSeats, setAvailableSeats] = useState([]);
-
   const title = localStorage.getItem('ticketMovieTitle');
   const description = localStorage.getItem('ticketMovieDescription');
   const thumbnail = localStorage.getItem('ticketMovieThumbnail');
@@ -63,7 +62,6 @@ function SeatSelection() {
       setSelectedSeats(prev => [...prev, seat.id]);
     }
   };
-
   const handleNext = async () => {
     if (selectedSeats.length === 0 || !selectedTime) return;
 
@@ -75,11 +73,17 @@ function SeatSelection() {
       price: selectedSeats.length * pricePerSeat
     };
 
+    // Debug: Log data yang akan dikirim
+    console.log('Sending seat payload:', seatPayload);
+    console.log('Date format:', date);
+    console.log('Time format:', selectedTime);
+    console.log('Seats:', selectedSeats);
+
     const ticketPayload = {
       title,
       description,
       thumbnail,
-      showtimes, // ⬅️ sudah array dari localStorage
+      showtimes,
       date,
       price: selectedSeats.length * pricePerSeat
     };
@@ -91,17 +95,25 @@ function SeatSelection() {
         body: JSON.stringify(seatPayload)
       });
 
-      if (!res1.ok) throw new Error('Gagal reservasi kursi');
+      console.log('Response status:', res1.status);
+
+      const responseData = await res1.json();
+      console.log('Response data:', responseData);
+
+      if (!res1.ok) {
+        console.error('Server error:', responseData);
+        throw new Error(responseData.error || 'Gagal reservasi kursi');
+      }
 
       localStorage.setItem('ticketSeat', selectedSeats.join(', '));
       localStorage.setItem('ticketTime', selectedTime);
       navigate('/checkout');
     } catch (err) {
       console.error("Error:", err);
-      alert("Terjadi kesalahan saat koneksi ke server.");
+      alert(`Terjadi kesalahan: ${err.message}`);
     }
   };
-
+  
   return (
     <div className="seat-selection-container">
       <div className="movie-detail-card">

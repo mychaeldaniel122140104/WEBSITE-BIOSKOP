@@ -1,6 +1,7 @@
 from pyramid.view import view_config
 from pyramid.response import Response
 from sqlalchemy.exc import DBAPIError
+from sqlalchemy.exc import IntegrityError
 from ..models.user import User
 import json
 
@@ -39,14 +40,12 @@ def login(request):
                         content_type='application/json; charset=utf-8',
                         status=500)
 
-
 @view_config(route_name='profile', renderer='json', request_method='GET')
 def profile_view(request):
     try:
-        user_id = request.session.get('user_id')  # Ambil dari session login
+        user_id = request.session.get('user_id')
 
         if not user_id:
-            # Kembalikan dict dan set status manual
             request.response.status = 401
             return {'message': 'Unauthorized'}
 
@@ -59,6 +58,7 @@ def profile_view(request):
         return {
             'username': user.username,
             'email': user.email,
+            'role': user.role
         }
 
     except Exception as e:
@@ -66,57 +66,191 @@ def profile_view(request):
         return {'message': 'Server error', 'error': str(e)}
 
 
-@view_config(route_name='register', renderer='json', request_method='POST')
-def register(request):
-    dbsession = request.dbsession
-    try:
-        data = request.json_body
-        username = data.get('username')
-        email = data.get('email')
-        password = data.get('password')
-
-        if not username or not email or not password:
-            return Response(json.dumps({'message': 'Username, email dan password harus diisi'}),
-                            content_type='application/json; charset=utf-8',
-                            status=400)
-
-        existing_user = dbsession.query(User).filter_by(username=username).first()
-        if existing_user:
-            return Response(json.dumps({'message': 'Username sudah digunakan'}),
-                            content_type='application/json; charset=utf-8',
-                            status=400)
-
-        new_user = User(username=username, email=email, password=password)
-        dbsession.add(new_user)
-
-        return Response(json.dumps({'message': 'Registrasi berhasil'}),
-                        content_type='application/json; charset=utf-8')
-
-    except DBAPIError as e:
-        return Response(json.dumps({'error': str(e)}),
-                        content_type='application/json; charset=utf-8',
-                        status=500)
-        
 @view_config(route_name='get_users', renderer='json', request_method='GET')
 def get_users(request):
     dbsession = request.dbsession
-    users = dbsession.query(User).all()
-    return [{"id": u.id, "username": u.username, "email": u.email} for u in users]
-
-@view_config(route_name='create_user', renderer='json', request_method='POST')
-def create_user(request):
-    dbsession = request.dbsession
     try:
-        data = request.json_body
-        user = User(
-            username=data.get('username'),
-            email=data.get('email'),
-            password=data.get('password')  # nanti bisa di-hash
-        )
-        dbsession.add(user)
-        dbsession.flush()
-        # Cukup return dict, Pyramid yang urus JSON dan content type
-        return {'message': 'User created'}
+        users = dbsession.query(User).all()
+        return [
+            {
+                "id": u.id,
+                "username": u.username,
+                "email": u.email,
+                "role": u.role,
+            }
+            for u in users
+        ]
     except DBAPIError as e:
         request.response.status = 500
         return {'error': str(e)}
+
+    
+@view_config(route_name='current_user', renderer='json', request_method='GET')
+def get_current_user(request):
+    # Asumsi Anda punya sistem session/auth
+    # Ganti dengan logic authentication Anda
+    user_id = request.session.get('user_id')  # atau dari JWT token
+    
+    if not user_id:
+        request.response.status = 401
+        return {'error': 'Not authenticated'}
+    
+    dbsession = request.dbsession
+    try:
+        user = dbsession.query(User).filter(User.id == user_id).first()
+        if not user:
+            request.response.status = 404
+            return {'error': 'User not found'}
+            
+        return {
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+            "role": user.role,
+            "role_name": "Admin" if user.role == 1 else "User"
+        }
+    except DBAPIError as e:
+        request.response.status = 500
+        return {'error': str(e)}
+
+# 1. ENDPOINT LAMA (jika masih ada) - beri nama berbeda
+@view_config(route_name='create_user', renderer='json', request_method='POST')
+def create_user(request):
+    print("=== ENDPOINT LAMA DIPANGGIL ===")
+    return {'message': 'Endpoint LAMA dipanggil'}
+
+@view_config(route_name='register', renderer='json', request_method='POST') 
+def register_user(request):
+    print("=== ENDPOINT REGISTER DIPANGGIL ===")
+    
+    # Tambahkan CORS headers
+    request.response.headers['Access-Control-Allow-Origin'] = '*'
+    request.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    request.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    
+    dbsession = request.dbsession
+    
+    try:
+        # Validasi content type
+        if not hasattr(request, 'json_body'):
+            request.response.status = 400
+            return {'message': 'Content-Type harus application/json'}
+        
+        data = request.json_body
+        print(f"Data diterima: {data}")
+        
+        # Validasi field wajib
+        username = data.get('username', '').strip()
+        email = data.get('email', '').strip() 
+        password = data.get('password', '').strip()
+        role_raw = data.get('role', 2)
+        
+        # Validasi input kosong
+        if not username:
+            request.response.status = 400
+            return {'message': 'Username tidak boleh kosong'}
+            
+        if not email:
+            request.response.status = 400
+            return {'message': 'Email tidak boleh kosong'}
+            
+        if not password:
+            request.response.status = 400
+            return {'message': 'Password tidak boleh kosong'}
+        
+        # Validasi panjang password
+        if len(password) < 3:
+            request.response.status = 400
+            return {'message': 'Password minimal 3 karakter'}
+        
+        print(f"Role raw: {role_raw}, type: {type(role_raw)}")
+        
+        # Konversi role dengan validasi
+        try:
+            role = int(role_raw)
+            if role not in [1, 2]:
+                role = 2
+        except (ValueError, TypeError):
+            role = 2
+            
+        print(f"Role final: {role}")
+        
+        # Cek apakah username sudah ada
+        existing_user = dbsession.query(User).filter_by(username=username).first()
+        if existing_user:
+            request.response.status = 409
+            return {'message': 'Username sudah digunakan'}
+        
+        # Cek apakah email sudah ada  
+        existing_email = dbsession.query(User).filter_by(email=email).first()
+        if existing_email:
+            request.response.status = 409
+            return {'message': 'Email sudah digunakan'}
+
+        # Buat user baru
+        user = User(
+            username=username,
+            email=email,
+            password=password,
+            role=role
+        )
+
+        dbsession.add(user)
+        
+        # Gunakan flush untuk mendapatkan ID tanpa commit
+        dbsession.flush()
+        
+        print(f"User created successfully with ID: {user.id}, role: {user.role}")
+        
+        # Manual commit
+        dbsession.commit()
+        
+        request.response.status = 201
+        return {
+            'message': 'Registrasi berhasil!',
+            'user_id': user.id,
+            'role_saved': user.role
+        }
+
+    except IntegrityError as e:
+        print(f"Integrity Error: {e}")
+        try:
+            dbsession.rollback()
+        except:
+            pass
+        request.response.status = 409
+        return {'message': 'Username atau email sudah digunakan'}
+        
+    except DBAPIError as e:
+        print(f"Database Error: {e}")
+        try:
+            dbsession.rollback()
+        except:
+            pass
+        request.response.status = 500
+        return {'message': 'Kesalahan database'}
+        
+    except Exception as e:
+        print(f"Unexpected Error: {e}")
+        try:
+            dbsession.rollback()
+        except:
+            pass
+        request.response.status = 500
+        return {'message': 'Terjadi kesalahan server'}
+        
+# Tambahkan OPTIONS handler untuk CORS preflight
+@view_config(route_name='register', renderer='json', request_method='OPTIONS')
+def register_options(request):
+    request.response.headers['Access-Control-Allow-Origin'] = '*'
+    request.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    request.response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return {}
+
+# 3. TEST ENDPOINT - untuk memastikan route bekerja
+@view_config(route_name='test_register', renderer='json', request_method='GET')
+def test_register(request):
+    return {
+        'message': 'Route register berfungsi!',
+        'endpoint': '/api/register'
+    }
