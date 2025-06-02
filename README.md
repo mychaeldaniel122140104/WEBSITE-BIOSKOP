@@ -2,74 +2,249 @@
 # Mychael Daniel N
 # Pemweb RB
 
+Berikut template isi file `README.md` yang **serius dan lengkap** sesuai ketentuan dari gambar (tanpa dummy text):
 
-# Getting Started with Create React App
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 📘 Judul Aplikasi Web
 
-## Available Scripts
+**TiketBioskop Web App**
 
-In the project directory, you can run:
+---
 
-### `npm start`
+### 📝 Deskripsi Aplikasi Web
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Aplikasi TiketBioskop adalah platform pemesanan tiket film berbasis web yang memungkinkan pengguna untuk melihat daftar film, memilih jadwal tayang, dan melakukan pemesanan tiket secara real-time. Aplikasi ini juga mendukung fitur administrasi untuk input data film dan manajemen pesanan.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### 📦 Dependensi Paket (Library)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Untuk menjalankan aplikasi ini, pastikan Anda menginstal dependensi berikut:
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Daftar dependensi utama:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* `react`
+* `react-dom`
+* `react-router-dom`
+* `axios`
+* `dayjs`
+* `@emotion/react`
+* `@emotion/styled`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend (jika ada):
 
-### `npm run eject`
+* `pyramid`
+* `sqlalchemy`
+* `passlib`
+* `alembic`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ⚙️ Fitur pada Aplikasi
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Pemesanan Tiket Film secara online.
+- Pemilihan Kursi Real-Time (kursi langsung tertutup jika dibeli).
+- Penjadwalan dan Manajemen Film oleh admin.
+- Pemesanan Makanan dan Minuman dan pembelian tiket.
+- Pembayaran Online dan Offline.
+- Notifikasi atau Bukti Pemesanan.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
+# 🚀 Cara Menjalankan Frontend React
 
-## Learn More
+Proyek ini dibuat menggunakan [Create React App](https://github.com/facebook/create-react-app).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📦 Persiapan Awal
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Buka terminal / command prompt**
+2. **Masuk ke folder proyek React**, misalnya:
 
-### Code Splitting
+   ```bash
+   cd nama-folder-frontend
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. **Install semua dependensi** (hanya perlu sekali):
 
-### Analyzing the Bundle Size
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## ▶️ Menjalankan Aplikasi
 
-### Making a Progressive Web App
+Untuk menjalankan aplikasi dalam mode development:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm start
+```
 
-### Advanced Configuration
+- Aplikasi akan terbuka di browser otomatis.
+- Atau buka manual: [http://localhost:3000](http://localhost:3000)
+- Perubahan pada file akan langsung terlihat (hot reload).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🧪 Menjalankan Testing (Opsional)
 
-### Deployment
+Jika ingin menjalankan test:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm test
+```
 
-### `npm run build` fails to minify
+## 🔧 Build untuk Produksi
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Jika ingin menyiapkan aplikasi untuk di-*deploy* (misalnya ke hosting):
+
+```bash
+npm run build
+```
+
+- Hasilnya akan ada di folder `build/`
+- Sudah dioptimasi dan siap upload ke server.
+
+## ⚠️ (Opsional) Eject Project
+
+> **Hanya untuk pengguna tingkat lanjut!**
+
+Jika ingin mengatur sendiri konfigurasi seperti webpack, Babel, dll:
+
+```bash
+npm run eject
+```
+
+Setelah eject, kamu tidak bisa kembali ke mode awal.
+
+### CARA MEMBUAT DAN MENJALANKAN BACKEND PYRAMID 
+
+Tahapan Pembuatan Aplikasi Web dengan Pyramid
+
+# Buat folder untuk proyek
+mkdir pyramid_mahasiswa
+cd pyramid_mahasiswa
+
+1. Instalasi Pyramid
+- Pastikan Python 3 sudah terinstal di sistem kamu.
+- Disarankan untuk menggunakan virtual environment:
+python -m venv env
+source env/bin/activate  # Untuk Linux/macOS
+env\Scripts\activate     # Untuk Windows
+- iNSTAL PYramid menggunakan pip
+pip install "pyramid==2.0"
+- Pastikan virtual environment aktif Jalankan cookiecutter dengan template Pyramid :
+cookiecutter gh:Pylons/pyramid-cookiecutter-alchemy
+Masukkan nama proyek dan template Language
+-  Install dependensi proyek (development mode)
+pip install -e ".[testing]"
+2. Struktur yang terlihat
+
+   pyramid_mahasiswa/
+├── .coveragerc
+├── .gitignore
+├── CHANGES.txt
+├── MANIFEST.in
+├── README.txt
+├── development.ini
+├── production.ini
+├── pytest.ini
+├── setup.py
+└── pyramid_mahasiswa/
+    ├── __init__.py
+    ├── alembic/
+    │   ├── env.py
+    │   ├── README
+    │   ├── script.py.mako
+    │   └── versions/
+    ├── models/
+    │   ├── __init__.py
+    │   ├── meta.py
+    │   └── mymodel.py
+    ├── routes.py
+    ├── scripts/
+    │   ├── __init__.py
+    │   └── initialize_db.py
+    ├── static/
+    │   ├── pyramid.png
+    │   ├── pyramid-16x16.png
+    │   ├── pyramid-32x32.png
+    │   ├── theme.css
+    │   └── theme.min.css
+    ├── templates/
+    │   ├── 404.jinja2
+    │   ├── layout.jinja2
+    │   └── mytemplate.jinja2
+    ├── tests/
+    └── views/
+        ├── __init__.py
+        ├── default.py
+        └── notfound.py
+
+3. Menjalankan PostgreSQL
+- Login ke PostgreSQL Ganti username dengan user PostgreSQL Anda
+psql -U postgres
+- Di dalam shell PostgreSQL
+CREATE DATABASE pyramid_mahasiswa;
+CREATE USER pyramid_user WITH ENCRYPTED PASSWORD 'pyramid_pass';
+GRANT ALL PRIVILEGES ON DATABASE pyramid_mahasiswa TO pyramid_user;
+\q
+- iNSTAL PSYCOPG2 untuk penghubungan python dan postgre
+pip install psycopg2-binary
+
+4. Konfigurasi Pyramid
+- Ubah isi file Development.ini Cari dan ganti baris sqlalchemy.url
+sqlalchemy.url = sqlite:///%(here)s/pyramid_mahasiswa.sqlite
+Menjadi: 
+sqlalchemy.url = postgresql://pyramid_user:pyramid_pass@localhost:5432/pyramid_mahasiswa
+
+5. Membuat file migrasi
+Buat file migrasi
+alembic -c development.ini revision --autogenerate -m "create mahasiswa table"
+ Jalankan migrasi
+alembic -c development.ini upgrade head
+
+6. Menjalankan Aplikasi
+Pastikan virtual environment aktif Di root proyek
+pserve development.ini --reload
+
+---
+
+# 📚 Referensi : React.js, Fetch, dan Pyramid Framework
+
+## 1. [MDN Web Docs - Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+Panduan lengkap tentang cara menggunakan `fetch()` untuk melakukan permintaan HTTP dari JavaScript (client side). Cocok untuk pemula hingga mahir.
+
+---
+
+## 2. [React.dev - Dokumentasi Resmi React](https://react.dev/)
+Dokumentasi resmi React.js versi modern. Berisi panduan hooks (`useState`, `useEffect`), konsep JSX, manajemen state, dan pengembangan UI.
+
+---
+
+## 3. [Create React App - GitHub](https://github.com/facebook/create-react-app)
+Starter project resmi dari tim React. Cocok untuk membuat proyek React dengan konfigurasi minimal.
+
+---
+
+## 4. [React Router - Navigasi di React](https://reactrouter.com/)
+Dokumentasi resmi `react-router-dom` yang digunakan untuk membuat navigasi antar halaman (routing) di aplikasi React.
+
+---
+
+## 5. [Pyramid Official Documentation](https://docs.pylonsproject.org/projects/pyramid/en/latest/)
+Dokumentasi lengkap Pyramid Web Framework (Python). Menjelaskan routing, view, model, dan integrasi REST API.
+
+---
+
+## 6. [RealPython - Membuat Web App dengan Pyramid](https://realpython.com/pyramid-python-web-app/)
+Tutorial praktis dari RealPython untuk membangun aplikasi web menggunakan Pyramid, termasuk koneksi database dan deployment.
+
+---
+
+## 7. [FreeCodeCamp - Fetch API dan Async/Await](https://www.freecodecamp.org/news/javascript-fetch-api-tutorial-with-js-fetch-post-and-header-examples/)
+Tutorial ringan dan jelas untuk memahami penggunaan fetch API dengan pendekatan `async/await`. Cocok untuk komunikasi React ke API backend.
+
+---
+
+## REFRENSI UTAMA : https://prakifpemweb.vercel.app/pemrograman-web/react-dasar
