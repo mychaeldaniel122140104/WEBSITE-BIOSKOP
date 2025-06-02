@@ -2,10 +2,6 @@
 # Mychael Daniel N
 # Pemweb RB
 
-Berikut template isi file `README.md` yang **serius dan lengkap** sesuai ketentuan dari gambar (tanpa dummy text):
-
----
-
 ### 📘 Judul Aplikasi Web
 
 **TiketBioskop Web App**
@@ -27,22 +23,22 @@ npm install
 ```
 
 Daftar dependensi utama:
-
+npx create-react-app my-app
+cd my-app
+npm install react-router-dom
 * `react`
 * `react-dom`
 * `react-router-dom`
-* `axios`
-* `dayjs`
-* `@emotion/react`
-* `@emotion/styled`
 
-Backend (jika ada):
-
-* `pyramid`
-* `sqlalchemy`
-* `passlib`
-* `alembic`
-
+Backend :
+pip install pyramid sqlalchemy passlib alembic psycopg2-binary
+- pyramid: Framework web Python yang fleksibel dan ringan.
+- sqlalchemy: ORM (Object-Relational Mapper) untuk berinteraksi dengan database.
+- passlib: Digunakan untuk hashing password secara aman.
+- alembic: Alat untuk migrasi skema database.
+- psycopg2-binary: Driver PostgreSQL untuk Python.
+  
+DATABASE : PostgreSQL
 ---
 
 ### ⚙️ Fitur pada Aplikasi
